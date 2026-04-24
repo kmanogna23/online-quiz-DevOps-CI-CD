@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevQuiz | Ultimate DevOps Challenge</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div id="login-page" class="screen active">
+        <div class="glass-card auth-card">
+            <i class="fas fa-user-shield auth-icon"></i>
+            <h1>Welcome Back</h1>
+            <p>Enter your details to start the quiz</p>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="dashboard-page" class="screen">
+        <nav class="navbar glass-card">
+            <div class="logo"><i class="fas fa-terminal"></i> DevQuiz</div>
+            <div class="nav-menu">
+                <a href="#" onclick="showSection('quizzes')" id="nav-quizzes" class="nav-link active">Quizzes</a>
+                <a href="#" onclick="showSection('leaderboard')" id="nav-leaderboard" class="nav-link">Leaderboard</a>
+                <a href="#" onclick="showSection('feedback')" id="nav-feedback" class="nav-link">Feedback</a>
+            </div>
+            <div class="nav-user">
+				<button id="theme-toggle" class="theme-btn">
+					<i class="fas fa-moon"></i>
+				</button>
+				<span id="user-display"></span>
+				<button onclick="logout()" class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+			</div>
+        </nav>
+
+        <main class="dashboard-content">
+            <section class="slider-container">
+                <div class="slider-wrapper" id="slider">
+                    <div class="slide grad-1">
+                        <div class="slide-content">
+                            <h2>Docker Mastery</h2>
+                            <p>Containers are the future. Are you ready?</p>
+                            <button class="btn-white">Join Challenge</button>
+                        </div>
+                    </div>
+                    <div class="slide grad-2">
+                        <div class="slide-content">
+                            <h2>K8s Orchestration</h2>
+                            <p>Test your pods, services, and deployment knowledge.</p>
+                            <button class="btn-white">Start Now</button>
+                        </div>
+                    </div>
+                    <div class="slide grad-3">
+                        <div class="slide-content">
+                            <h2>CI/CD Expert</h2>
+                            <p>Automate everything. Master the pipeline.</p>
+                            <button class="btn-white">Explore</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+                    <button onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <div id="section-quizzes" class="content-section active">
+                <h2 class="section-title">Available Quizzes</h2>
+                <div class="quiz-grid" id="quiz-list"></div>
+            </div>
+
+            <div id="section-leaderboard" class="content-section">
+                <h2 class="section-title">Top Performers</h2>
+                <div class="glass-card">
+                    <table class="styled-table">
+                        <thead>
+                            <tr><th>Rank</th><th>User</th><th>Score</th><th>Badge</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>Admin_Dev</td><td>980</td><td>🥇</td></tr>
+                            <tr><td>2</td><td>Cloud_Guru</td><td>945</td><td>🥈</td></tr>
+                            <tr><td>3</td><td>Script_Kid</td><td>890</td><td>🥉</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="section-feedback" class="content-section">
+                <h2 class="section-title">Feedback</h2>
+                <div class="glass-card feedback-form">
+                    <textarea id="fb-text" placeholder="Tell us how we can improve..."></textarea>
+                    <button class="btn-primary" onclick="alert('Feedback Sent!')">Submit</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="result-page" class="screen">
+        <div class="glass-card result-card">
+            <i class="fas fa-check-circle trophy-icon"></i>
+            <h2>Quiz Finished!</h2>
+            <div class="score-circle"><span id="final-score">0/0</span></div>
+            <button onclick="showSection('quizzes'); showScreen('dashboard-page')" class="btn-primary">Return Home</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

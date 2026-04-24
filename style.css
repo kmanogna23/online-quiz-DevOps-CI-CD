@@ -1,0 +1,122 @@
+:root {
+    --primary: #6366f1;
+    --bg-dark: #0f172a;
+    --glass: rgba(255, 255, 255, 0.05);
+    --text: #f8fafc;
+}
+
+/* Replace your old body style with this */
+body {
+    margin: 0; 
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color); /* This allows the toggle to work */
+    color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+.screen { display: none; min-height: 100vh; }
+.screen.active { display: block; animation: fadeIn 0.5s ease; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Login */
+.auth-card { width: 350px; margin: 100px auto; text-align: center; padding: 3rem; }
+.auth-icon { font-size: 3rem; color: var(--primary); margin-bottom: 1rem; }
+input { 
+    width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; 
+    border: 1px solid #334155; background: #1e293b; color: white; box-sizing: border-box;
+}
+
+/* Nav */
+.navbar { 
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 5%; border-radius: 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.nav-link { color: white; text-decoration: none; margin: 0 15px; opacity: 0.6; transition: 0.3s; }
+.nav-link.active { opacity: 1; color: var(--primary); font-weight: bold; }
+.logout-btn { background: none; border: none; color: #ff4757; cursor: pointer; font-size: 1.2rem; }
+
+/* Slider */
+.slider-container { 
+    position: relative; width: 90%; margin: 2rem auto; 
+    height: 250px; border-radius: 20px; overflow: hidden; 
+}
+.slider-wrapper { display: flex; transition: transform 0.6s ease; height: 100%; }
+.slide { min-width: 100%; display: flex; align-items: center; padding: 0 10%; }
+.grad-1 { background: linear-gradient(45deg, #4f46e5, #0ea5e9); }
+.grad-2 { background: linear-gradient(45deg, #7c3aed, #db2777); }
+.grad-3 { background: linear-gradient(45deg, #059669, #3b82f6); }
+.btn-white { background: white; color: black; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px; }
+
+.slider-controls {
+    position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%);
+}
+.slider-controls button { background: rgba(0,0,0,0.3); border: none; color: white; padding: 10px; cursor: pointer; }
+
+/* Dashboard Sections */
+.dashboard-content { padding: 0 5%; }
+.content-section { display: none; }
+.content-section.active { display: block; }
+.quiz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
+.quiz-card { background: var(--glass); padding: 20px; border-radius: 15px; text-align: center; border: 1px solid transparent; cursor: pointer; }
+.quiz-card:hover { border-color: var(--primary); background: rgba(255,255,255,0.1); }
+
+/* Table */
+.styled-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+.styled-table th, .styled-table td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+.glass-card { background: var(--glass); backdrop-filter: blur(10px); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+.btn-primary { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; width: 100%; }
+
+/* --- THEME TOGGLE ADDITIONS --- */
+
+/* 1. Define Theme Variables */
+:root {
+    /* Dark Mode (Default) */
+    --bg-color: #0f172a;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --text-color: #f8fafc;
+    --primary: #6366f1;
+    --nav-bg: rgba(15, 23, 42, 0.8);
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+/* 2. Define Light Mode Variables */
+[data-theme="light"] {
+    --bg-color: #f1f5f9;
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --text-color: #1e293b;
+    --nav-bg: rgba(255, 255, 255, 0.9);
+    --border: rgba(0, 0, 0, 0.1);
+}
+
+/* 3. Apply Variables to existing elements */
+.glass-card {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text-color);
+}
+
+.navbar {
+    background: var(--nav-bg) !important;
+    border-bottom: 1px solid var(--border) !important;
+}
+
+/* 4. Theme Button Styling */
+.theme-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text-color);
+    padding: 8px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: 0.3s;
+}
+
+.theme-btn:hover {
+    transform: scale(1.1);
+    border-color: var(--primary);
+}
+
